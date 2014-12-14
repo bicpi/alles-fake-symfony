@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block title "AliceBundle - Demo" %}
+
+{% block body %}
+    <style>
+    th {
+        text-align: left;
+    }
+    td {
+        padding: 0 15px 4px 0;
+    }
+    </style>
+    {% if users %}
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Skills</th>
+                <th>Created</th>
+                <th>Updated</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.skills|join(', ')|default('-') }}</td>
+                    <td>{{ user.created|date('d.m.Y H:i:s') }}</td>
+                    <td>{{ user.updated|date('d.m.Y H:i:s') }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No users found.</p>
+    {% endif %}
+{% endblock %}

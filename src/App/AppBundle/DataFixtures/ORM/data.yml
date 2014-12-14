@@ -1,0 +1,11 @@
+App\AppBundle\Entity\User:
+  user (template):
+    name: <name()>
+    email (unique): <email()>
+    skills: <skills(0, 3)>
+    created: <dateTimeBetween('-100 days', 'now')>
+    updated: <dateTimeBetween($created, 'now')>
+  user{1..10} (extends user):
+    name: <de_DE:name()>
+  user{11..20} (extends user):
+    name: <fr_FR:name()>
